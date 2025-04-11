@@ -39,7 +39,7 @@ python example.py
 
 
 ## Publishing to PyPI
-Before getting started, make sure you have a PyPi account and an API token, and make sure to set a unique name for your package.
+Before getting started, make sure you have a PyPI account and an API token, and make sure to set a unique name for your package.
 
 1. **Prepare the package**:
    ```bash

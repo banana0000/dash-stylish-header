@@ -24,5 +24,3 @@ dev = [
 [tool.setuptools]
 packages = ["dash_stylish_header"]
 
-[tool.setuptools.package-data]
-dash_stylish_header = ["py.typed"]
