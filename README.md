@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# dash-stylish-header
-An example of a Dash Hook for distribution on PyPi
-=======
 # Dash Hooks Demo
 
 A stylish header component for Dash applications using Dash Hooks.
@@ -58,4 +54,3 @@ python example.py
    ```bash
    python -m twine upload dist/*
    ```
->>>>>>> 85c8ab4 (Create an example package with a custom header)
