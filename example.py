@@ -3,15 +3,13 @@ from dash import Dash, html, dash_table, dcc, callback, Output, Input
 import pandas as pd
 import plotly.express as px
 
-from dash_stylish_header import register_hooks
+import dash_stylish_header
 
 # Explicitly register hooks
-register_hooks(title="Welcome Dash 3.0!")
+dash_stylish_header.setup_hooks(title="Welcome Dash 3.0!")
 
 # Incorporate data
-df = pd.read_csv(
-    "https://raw.githubusercontent.com/plotly/datasets/master/gapminder2007.csv"
-)
+df = px.data.gapminder()
 
 # Initialize the app - incorporate css
 external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"]
@@ -54,8 +52,8 @@ app.layout = [
 
 # Add controls to build the interaction
 @callback(
-    Output(component_id="histo-chart-final", component_property="figure"),
-    Input(component_id="my-radio-buttons-final", component_property="value"),
+    Output("histo-chart-final", "figure"),
+    Input("my-radio-buttons-final", "value"),
 )
 def update_graph(col_chosen):
     fig = px.histogram(df, x="continent", y=col_chosen, histfunc="avg")

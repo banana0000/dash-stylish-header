@@ -4,7 +4,7 @@ __version__ = "0.0.1"
 
 
 # Function to explicitly register hooks
-def register_hooks(title="Dash Application"):
+def setup_hooks(title="Dash Application"):
     """Explicitly register all hooks from this package.
 
     Args:
