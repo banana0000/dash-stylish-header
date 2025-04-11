@@ -26,6 +26,3 @@ packages = ["dash_stylish_header"]
 
 [tool.setuptools.package-data]
 dash_stylish_header = ["py.typed"]
-
-[project.entry-points."dash.hooks"]
-stylish_header = "dash_stylish_header:register_hooks"
