@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dash_stylish_header"
+version = "0.0.1"
+description = "Stylish header component for Dash applications using Dash Hooks"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [
+    {name = "Plotly", email = "info@plotly.com"}
+]
+dependencies = [
+    "dash>=3.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.0",
+    "ruff>=0.11.0"
+]
+
+[tool.setuptools]
+packages = ["dash_stylish_header"]
+
