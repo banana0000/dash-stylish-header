@@ -1,22 +1,19 @@
-# Import packages
-from dash import Dash, html, dash_table, dcc, callback, Output, Input
-import pandas as pd
+from dash import Dash, html, dash_table, dcc, Output, Input
 import plotly.express as px
+import dash_stylish_header_footer_hook
 
-import dash_stylish_header
+# Register header and footer hooks with header custom gradient adn footer text
+dash_stylish_header_footer_hook.add_header(
+   gradient="linear-gradient(90deg, black, red)"
+)
+dash_stylish_header_footer_hook.add_footer_hook("© 2025 My Dash App")
 
-# Explicitly register hooks
-dash_stylish_header.setup_hooks(title="Welcome Dash 3.0!")
-
-# Incorporate data
+# Data
 df = px.data.gapminder()
 
-# Initialize the app - incorporate css
-external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"]
-app = Dash(external_stylesheets=external_stylesheets)
+app = Dash()
 
-# App layout
-app.layout = [
+app.layout = html.Div([
     html.Div(
         className="row",
         children=[
@@ -38,6 +35,7 @@ app.layout = [
                         data=df.to_dict("records"),
                         page_size=11,
                         style_table={"overflowX": "auto"},
+                        id="datatable",
                     )
                 ],
             ),
@@ -47,11 +45,9 @@ app.layout = [
             ),
         ],
     ),
-]
+])
 
-
-# Add controls to build the interaction
-@callback(
+@app.callback(
     Output("histo-chart-final", "figure"),
     Input("my-radio-buttons-final", "value"),
 )
@@ -59,7 +55,5 @@ def update_graph(col_chosen):
     fig = px.histogram(df, x="continent", y=col_chosen, histfunc="avg")
     return fig
 
-
-# Run the app
 if __name__ == "__main__":
     app.run(debug=True, port=8051)
